@@ -1,0 +1,38 @@
+#%RAML 1.0
+title: Bank Accounts
+version: v1
+baseUri: http://localhost:8081/api/first
+
+types:
+  Player:
+    properties:
+      id: string
+      name: string
+      playerType: string
+
+
+/player:
+  description: Collection of players
+  get:
+    responses:
+      "200":
+        description: Players found
+        body:
+          application/json:
+            type: Player[]
+            example: |
+              [{
+                "id":"3133313",
+                "name":"dssadsd",
+                "playerType":"313123"
+              }]
+  /{playerId}:
+    uriParameters:
+      playerId: string
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: Player
+
